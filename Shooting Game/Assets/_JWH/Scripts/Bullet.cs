@@ -19,11 +19,10 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
-    //카메라 화면 밖으로 나가면 지워주는 함수
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+    ////카메라 화면 밖으로 나가면 지워주는 함수
+    //private void OnBecameInvisible()
+    //{
+    //    Destroy(gameObject);
+    //}
 
 }
