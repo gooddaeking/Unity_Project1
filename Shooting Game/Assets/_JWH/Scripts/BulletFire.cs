@@ -27,10 +27,6 @@ public class BulletFire : MonoBehaviour
     void Update()
     {
         count += 1;
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Fire();
-        }
         if (count % 60 == 0)
         {
             Fire();
