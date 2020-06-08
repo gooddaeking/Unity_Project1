@@ -19,6 +19,15 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //자기자신도 없애고 충돌된 오브젝트도 없앤다
+        // Destroy(gameObject, 1.0f); 1초 후에 없앤다
+        Destroy(gameObject);
+        Destroy(collision.gameObject);
+    }
+
+
     ////카메라 화면 밖으로 나가면 지워주는 함수
     //private void OnBecameInvisible()
     //{
