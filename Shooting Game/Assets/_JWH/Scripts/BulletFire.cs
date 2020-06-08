@@ -34,7 +34,7 @@ public class BulletFire : MonoBehaviour
         Bird();
     }
 
-    private void Fire()
+    public void Fire()
     {
         
          //총알공장(총알프리팹)에서 총알을 무한대로 찍어낼 수 있다
