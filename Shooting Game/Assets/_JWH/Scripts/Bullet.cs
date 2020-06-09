@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
 using UnityEngine;
@@ -25,6 +26,13 @@ public class Bullet : MonoBehaviour
         // Destroy(gameObject, 1.0f); 1초 후에 없앤다
         Destroy(gameObject);
         Destroy(collision.gameObject);
+
+        ShowEffect();
+    }
+
+    private void ShowEffect()
+    {
+        
     }
 
 

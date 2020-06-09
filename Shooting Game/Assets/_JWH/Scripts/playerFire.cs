@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +7,8 @@ public class playerFire : MonoBehaviour
 {
     public GameObject bulletFactory;        //총알 프리팹
     public GameObject firePoint;            //발사지점 좌표
+
+    public AudioSource audio;
     
 
     //레이저를 발사하기 위해서는 라인렌더러가 필요하다
@@ -27,6 +28,7 @@ public class playerFire : MonoBehaviour
         //중요!!!
         //게임오브젝트는 활성화 비활성화 => SetActive() 함수 사용
         //컴포넌트는 enabled 속성 사용
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,8 @@ public class playerFire : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            //레이져 사운드 재생
+            audio.Play();
             //라인렌더러 컴포넌트 활성화
             lr.enabled = true;
             //라인 시작점, 끝점
