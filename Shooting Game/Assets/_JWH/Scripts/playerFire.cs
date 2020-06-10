@@ -10,6 +10,8 @@ public class playerFire : MonoBehaviour
     public GameObject firePoint;            //발사지점 좌표
 
     public AudioSource audio;
+    public float lineWidth = 1.0f;
+    Vector2 xy = new Vector2(0, 0);
 
     //오브젝트 풀링
     //오브젝트 풀링에 사용할 최대 총알개수
@@ -128,7 +130,7 @@ public class playerFire : MonoBehaviour
     private void FireRay()
     {
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             //레이져 사운드 재생
             audio.Play();
@@ -139,6 +141,8 @@ public class playerFire : MonoBehaviour
             lr.SetPosition(0, pos);
             //lr.SetPosition(1, transform.position + Vector3.up * 10);
             //오브젝트와 충돌지점이 끝점이다
+            
+            
 
             //Ray로 충돌처리
             Ray ray = new Ray(transform.position, Vector3.up);
@@ -157,6 +161,14 @@ public class playerFire : MonoBehaviour
                 //충돌된 오브젝트가 없으니 끝점을 정해준다
                 lr.SetPosition(1, transform.position + Vector3.up * 10);
             }
+        }
+        if(lr.enabled)
+        {
+            lineWidth = 1.0f;
+            lineWidth -= 0.05f;
+            lr.SetWidth(lineWidth, lineWidth);
+            xy.y += Time.deltaTime * 5.0f;
+            lr.material.mainTextureOffset = xy;
         }
     }
 }

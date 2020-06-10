@@ -19,7 +19,7 @@ public class DestroyZone : MonoBehaviour
         //}
 
         //레이어로 충돌체 찾기
-        if(other.gameObject.layer == LayerMask.NameToLayer("Bullet")
+        if(other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             other.gameObject.SetActive(false);
             //플레이어 오브젝트의 컴포넌트에 접근해서 처리한다

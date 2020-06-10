@@ -1345,8 +1345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3153537ed8e93498a6ff72d8d1ecea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletFactory: {fileID: 0}
-  firePoint: {fileID: 0}
+  bulletFactory: {fileID: 787290133266578077, guid: 45ab6b9343d2b4b4398c82a782bde665,
+    type: 3}
+  firePoint: {fileID: 400673557}
   tail:
   - {fileID: 1365344994}
   - {fileID: 292205766}
@@ -1367,6 +1368,7 @@ MonoBehaviour:
   bulletFactory: {fileID: 0}
   firePoint: {fileID: 0}
   audio: {fileID: 726213813}
+  bulletPool: []
   rayTime: 0.3
 --- !u!120 &726213812
 LineRenderer:
