@@ -138,7 +138,7 @@ public class playerFire : MonoBehaviour
             lr.enabled = true;
             //라인 시작점, 끝점
             Vector3 pos = transform.position;
-            lr.SetPosition(0, pos);
+            lr.SetPosition(0, pos + Vector3.up * 1);
             //lr.SetPosition(1, transform.position + Vector3.up * 10);
             //오브젝트와 충돌지점이 끝점이다
             
@@ -164,9 +164,9 @@ public class playerFire : MonoBehaviour
         }
         if(lr.enabled)
         {
-            lineWidth = 1.0f;
-            lineWidth -= 0.05f;
-            lr.SetWidth(lineWidth, lineWidth);
+            //lineWidth = 1.0f;
+            //lineWidth -= 0.05f;
+            //lr.SetWidth(lineWidth, lineWidth);
             xy.y += Time.deltaTime * 5.0f;
             lr.material.mainTextureOffset = xy;
         }

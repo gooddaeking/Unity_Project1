@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackGround : MonoBehaviour
 {
     Renderer bg;
-    float speed = 0.5f;
+    float speed = 0.1f;
     Vector2 xy = new Vector2(0, 0);
 
     // Start is called before the first frame update
