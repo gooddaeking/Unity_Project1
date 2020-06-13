@@ -9,6 +9,11 @@ public class Button : MonoBehaviour
         SceneMgr.Instance.LoadScene("GameScene");
     }
 
+    public void OnReStartButtonClick()
+    {
+        SceneMgr.Instance.LoadScene("StartScene");
+    }
+
     public void OnMenuButtonClick()
     {
 

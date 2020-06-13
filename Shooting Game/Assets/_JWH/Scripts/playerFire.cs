@@ -68,11 +68,11 @@ public class playerFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Fire();
-        FireRay();
+        //Fire();
+        //FireRay();
         //레이저 보여주는 기능이 활성화되어있을 때만
         //레이져를 보여준다
-        if (lr.enabled) ShowRay();
+        ShowRay();
     }
 
     private void Fire()
@@ -117,7 +117,7 @@ public class playerFire : MonoBehaviour
         }
     }
 
-    private void ShowRay()
+    void ShowRay()
     {
         timer += Time.deltaTime;
         if(timer > rayTime)
@@ -127,11 +127,9 @@ public class playerFire : MonoBehaviour
         }
     }
 
-    private void FireRay()
+    public void FireRay()
     {
 
-        if (Input.GetButton("Fire1"))
-        {
             //레이져 사운드 재생
             audio.Play();
             //라인렌더러 컴포넌트 활성화
@@ -139,7 +137,7 @@ public class playerFire : MonoBehaviour
             //라인 시작점, 끝점
             Vector3 pos = transform.position;
             lr.SetPosition(0, pos + Vector3.up * 1);
-            //lr.SetPosition(1, transform.position + Vector3.up * 10);
+            lr.SetPosition(1, transform.position + Vector3.up * 10);
             //오브젝트와 충돌지점이 끝점이다
             
             
@@ -149,7 +147,7 @@ public class playerFire : MonoBehaviour
             RaycastHit hitInfo; //Ray와 충돌된 오브젝트 정보를 담는다
             if (Physics.Raycast(ray, out hitInfo))
             {
-                lr.SetPosition(1, hitInfo.point);
+                //lr.SetPosition(1, hitInfo.point);
                 if(hitInfo.collider.name.Contains("Enemy") ||
                     hitInfo.collider.name.Contains("Bullet"))
                 {
@@ -159,16 +157,23 @@ public class playerFire : MonoBehaviour
             else
             {
                 //충돌된 오브젝트가 없으니 끝점을 정해준다
-                lr.SetPosition(1, transform.position + Vector3.up * 10);
+                //lr.SetPosition(1, transform.position + Vector3.up * 10);
             }
-        }
         if(lr.enabled)
         {
-            //lineWidth = 1.0f;
-            //lineWidth -= 0.05f;
-            //lr.SetWidth(lineWidth, lineWidth);
             xy.y += Time.deltaTime * 5.0f;
             lr.material.mainTextureOffset = xy;
+            //lineWidth -= 0.05f;
+            //lr.SetWidth(lineWidth, lineWidth);
+            //if(lineWidth < 0.0f)
+            //{
+            //    lineWidth = 0.0f;
+            //}
+            
+        }
+        else
+        {
+            lineWidth = 1.0f;
         }
     }
 }

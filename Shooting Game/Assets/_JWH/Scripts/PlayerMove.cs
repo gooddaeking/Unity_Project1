@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
     public Vector2 margin;          //뷰포트 좌표는 0.0f ~ 1.0f 사이의 값
 
     public VariableJoystick joystick;
+    public GameObject fxFactory;
+    public GameObject restart;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class PlayerMove : MonoBehaviour
     {
         //Move();
         MoveInScreen();
+
+        
     }
 
     private void MoveInScreen()
@@ -91,5 +95,19 @@ public class PlayerMove : MonoBehaviour
         //transform.position += dir * speed * Time.deltaTime;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        restart.SetActive(true);
+        if (collision.collider.name.Contains("Bullet"))
+        {
+            Destroy(gameObject);
+            ShowEffect();
+        }
+    }
 
+    void ShowEffect()
+    {
+        GameObject fx = Instantiate(fxFactory);
+        fx.transform.position = transform.position;
+    }
 }

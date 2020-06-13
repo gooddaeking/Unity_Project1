@@ -17,13 +17,27 @@ public class Boss : MonoBehaviour
     public float fireTime1 = 1.5f;
     float currTime1;
     public int bulletMax = 10;
+    public int hp = 3000;
+    public GameObject fxFactory;
 
     // Update is called once per frame
     void Update()
     {
-        
-        AutoFire1();
-        AutoFire2();
+        if (transform.position.y > 5)
+        {
+            transform.Translate(-transform.up * 1.0f * Time.deltaTime);
+        }
+        else
+        {
+            AutoFire1();
+            AutoFire2();
+        }
+
+        if(hp <= 0)
+        {
+            ShowEffect();
+            Destroy(gameObject);
+        }
     }
 
     private void AutoFire1()
@@ -67,6 +81,15 @@ public class Boss : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        hp -= 10;
+    }
+
+    void ShowEffect()
+    {
+        GameObject fx = Instantiate(fxFactory);
+        fx.transform.position = transform.position;
+    }
 
 }

@@ -15,7 +15,8 @@ public class BulletFire : MonoBehaviour
     bool fireOn = false;
     bool birdOn = false;
     // 대신 사용할수 있는 함수 activeself
-    int count = 0;
+    int count = -1;
+    public int plus;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class BulletFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        count += 1;
+        count += plus;
         if (count % 60 == 0)
         {
             Fire();
@@ -36,12 +37,11 @@ public class BulletFire : MonoBehaviour
 
     public void Fire()
     {
-        
-         //총알공장(총알프리팹)에서 총알을 무한대로 찍어낼 수 있다
-         //Instantiate() 함수로 프리팹 파일을 게임오브젝트로 만든다
+        //총알공장(총알프리팹)에서 총알을 무한대로 찍어낼 수 있다
+        //Instantiate() 함수로 프리팹 파일을 게임오브젝트로 만든다
 
-         //총알 게임오브젝트 생성
-         GameObject bullet = Instantiate(bulletFactory);
+        //총알 게임오브젝트 생성
+        GameObject bullet = Instantiate(bulletFactory);
          //총알 오브젝트의 위치 지정
          bullet.transform.position = firePoint.transform.position;
         

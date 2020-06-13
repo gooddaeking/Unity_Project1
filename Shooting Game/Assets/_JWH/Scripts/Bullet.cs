@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -25,7 +24,11 @@ public class Bullet : MonoBehaviour
         //자기자신도 없애고 충돌된 오브젝트도 없앤다
         // Destroy(gameObject, 1.0f); 1초 후에 없앤다
         Destroy(gameObject);
-        Destroy(collision.gameObject);
+        if (collision.collider.name.Contains("Player"))
+            {
+                Destroy(collision.gameObject);
+            } 
+        Score.score += 10;
 
         ShowEffect();
     }
